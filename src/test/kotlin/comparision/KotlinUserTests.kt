@@ -39,6 +39,7 @@ class KotlinUserTests {
 
     @Test
     fun typeInference() {
+        // 타입을 명시하지 않아도 컴파일러가 추론한다.
         val foo: Int = 3
         val bar = 3L // Long type
         assertTrue(foo is Int)
@@ -49,4 +50,43 @@ class KotlinUserTests {
 
         val baz = "hello" // String type
     }
+
+    @Test
+    fun testExpressionsIf() {
+        val number = 3;
+
+        val isEven = if(number%2 == 0) {
+            // 짝수
+            true
+        } else {
+            false
+        }
+
+        println("${number}는 짝수인가? $isEven .")
+
+        assertEquals(false, isEven)
+
+    }
+
+    @Test
+    fun testWhenExpression() {
+        val condition: Any = "hello"
+
+        val result: Any = when(condition) {
+            1 -> {
+                println("이건 숫자")
+                1
+            }
+            "hello" -> {
+                println("hello world")
+                "world"
+            }
+            else -> {
+                println("else 구문은 꼭 들어가야 함")
+            }
+        }
+
+        println("결과는 -> $result")
+    }
+
 }
