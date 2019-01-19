@@ -36,4 +36,17 @@ class KotlinUserTests {
         }
         // obj가 null이면 하위 로직이 실행되지 않기때문에, null 처리 필요가 없음
     }
+
+    @Test
+    fun typeInference() {
+        val foo: Int = 3
+        val bar = 3L // Long type
+        assertTrue(foo is Int)
+        assertTrue(bar is Long)
+
+        assertEquals(6, foo + bar)
+        assertTrue((foo + bar) is Long)
+
+        val baz = "hello" // String type
+    }
 }
