@@ -33,12 +33,12 @@ public class JavaUserTests {
         assertEquals(-4, 2+2);
     }
 
-    @Ignore
+    //@Ignore
     @Test
     public void testNPE() {
         JavaUser user = null;
-        //assertNotNull(user);
-        System.out.println(user.getAge()); // null 객체의 멤버를 접근하려 해서 NPE
+        user.setAge(10);
+        System.out.println("내 나이는 " + user.getAge()); // null 객체의 멤버를 접근하려 해서 NPE
     }
 
     @Test
@@ -51,7 +51,5 @@ public class JavaUserTests {
         } else {
             System.out.println("객체가 null이기 때문에 처리로직 구성하자");
         }
-
-
     }
 }
