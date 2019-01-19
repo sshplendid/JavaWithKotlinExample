@@ -1,6 +1,7 @@
 package comparision
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class KotlinUserTests {
@@ -89,4 +90,13 @@ class KotlinUserTests {
         println("결과는 -> $result")
     }
 
+    @Test
+    fun testLambda() {
+        val numbers = listOf("1", "3", "5", "7")
+
+        numbers
+            .map { it.toInt() }
+            .map { number -> number*2 }
+            .forEach { println("forEach -> ${it}") }
+    }
 }

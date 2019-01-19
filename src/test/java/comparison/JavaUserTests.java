@@ -3,6 +3,9 @@ package comparison;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class JavaUserTests {
@@ -51,5 +54,16 @@ public class JavaUserTests {
         } else {
             System.out.println("객체가 null이기 때문에 처리로직 구성하자");
         }
+    }
+
+    @Test
+    public void testLambda() {
+        List<String> numbers = List.<String>of("1", "3", "5", "7");
+
+        numbers.stream()
+                .map(Integer::parseInt)
+                .map(n -> n*2)
+                .forEach(str -> System.out.println("forEach -> " + str));
+
     }
 }
