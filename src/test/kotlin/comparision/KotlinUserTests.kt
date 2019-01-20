@@ -58,14 +58,14 @@ class KotlinUserTests {
 
         val isEven = if(number%2 == 0) {
             // 짝수
-            true
+            "Even"
         } else {
-            false
+            "Odd"
         }
 
         println("${number}는 짝수인가? $isEven .")
 
-        assertEquals(false, isEven)
+        assertEquals("Odd", isEven)
 
     }
 
@@ -73,7 +73,7 @@ class KotlinUserTests {
     fun testWhenExpression() {
         val condition: Any = "hello"
 
-        val result: Any = when(condition) {
+        val result = when(condition) {
             1 -> {
                 println("이건 숫자")
                 1
@@ -82,8 +82,13 @@ class KotlinUserTests {
                 println("hello world")
                 "world"
             }
+            true -> {
+                println("It's true!")
+                true
+            }
             else -> {
                 println("else 구문은 꼭 들어가야 함")
+                Unit
             }
         }
 
