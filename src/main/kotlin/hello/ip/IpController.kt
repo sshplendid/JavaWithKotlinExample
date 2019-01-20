@@ -9,7 +9,7 @@ class IpController {
 
     @GetMapping("/ip")
     fun getIp(req: HttpServletRequest): String {
-        val ip: String? = req.getHeader("X-FORWARDED-FOR")
+        val ip: String? = req.getHeader("X-FORWARDED-FOR")?:req.remoteAddr
 
         return ip?:"anonymous"
     }

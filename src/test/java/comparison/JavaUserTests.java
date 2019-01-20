@@ -3,10 +3,10 @@ package comparison;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class JavaUserTests {
     @Test
@@ -58,7 +58,7 @@ public class JavaUserTests {
 
     @Test
     public void testLambda() {
-        List<String> numbers = List.<String>of("1", "3", "5", "7");
+        List<String> numbers = Arrays.asList("1", "3", "5", "7");
 
         numbers.stream()
                 .map(Integer::parseInt)
