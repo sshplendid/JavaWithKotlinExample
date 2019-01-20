@@ -1,20 +1,26 @@
 buildscript {
+    ext.kotlin_version = '1.3.11'
+    ext.spring_version = '2.0.5.RELEASE'
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$spring_version")
+        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version" // See https://kotlinlang.org/docs/reference/compiler-plugins.html#spring-support
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Required for Kotlin integration
     }
 }
+
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.3.11'
 }
+
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
-
+apply plugin: 'kotlin-spring' // 코틀린 클래스는 기본적으로 final이기 때문에 필요한 설정, https://infoscis.github.io/2018/08/30/spring-boot-kotlin/
 
 group 'net.sshplendid'
 version '1.0-SNAPSHOT'
@@ -27,6 +33,8 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile "org.jetbrains.kotlin:kotlin-reflect"
+
     compile("org.springframework.boot:spring-boot-starter-web")
     testCompile('org.springframework.boot:spring-boot-starter-test')
 //    testCompile group: 'junit', name: 'junit', version: '4.12'
